@@ -1,4 +1,4 @@
-package meupinto;
+package me.dio.iphoneoop;
 
 public class IPhone implements Music, Browser, Phone {
 

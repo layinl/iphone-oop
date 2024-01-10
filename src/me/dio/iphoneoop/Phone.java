@@ -1,4 +1,4 @@
-package meupinto;
+package me.dio.iphoneoop;
 
 public interface Phone extends App {
 
