@@ -1,4 +1,4 @@
-package me.dio.iphoneoop;
+package me.dio.iphoneoop.app;
 
 public interface Browser extends App {
 

@@ -1,5 +1,9 @@
 package me.dio.iphoneoop;
 
+import me.dio.iphoneoop.app.Browser;
+import me.dio.iphoneoop.app.Music;
+import me.dio.iphoneoop.app.Phone;
+
 public class IPhone implements Music, Browser, Phone {
 
   private final String name;
