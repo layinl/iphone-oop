@@ -7,58 +7,103 @@ import me.dio.iphoneoop.app.Phone;
 public class IPhone implements Music, Browser, Phone {
 
   private final String name;
+  private boolean isPhoneRunning;
+  private boolean isMusicRunning;
+  private boolean isBrowserRunning;
+
+  private boolean checkIfRunning(String app) {
+    return switch(app) {
+      case "phone" -> isPhoneRunning;
+      case "music" -> isMusicRunning;
+      case "browser" -> isBrowserRunning;
+      default -> throw new IllegalStateException("Unexpected value: " + app);
+    };
+  }
 
   public IPhone() {
     name = "iphone";
+    isPhoneRunning = false;
+    isMusicRunning = false;
+    isBrowserRunning = false;
   }
 
   public IPhone(String name) {
     this.name = name;
+    isPhoneRunning = false;
+    isMusicRunning = false;
+    isBrowserRunning = false;
   }
 
   @Override
   public void play() {
-    System.out.println("Playing music on " + name);
+    if(checkIfRunning("music"))
+      System.out.println("Playing music on " + name);
+    else System.out.println("Music not running");
   }
 
   @Override
   public void pause() {
-    System.out.println("Paused");
+    if(checkIfRunning("music"))
+      System.out.println("Paused");
+    else System.out.println("Music not running");
   }
 
   @Override
   public void stop() {
     // ♪ PLEASE DON'T STOP THE MUSIC ♪
-    System.out.println("Stopped");
+    if(checkIfRunning("music"))
+      System.out.println("Stopped");
+    else System.out.println("Music not running");
   }
 
   @Override
   public void next() {
-    System.out.println("Next music");
+    if(checkIfRunning("music"))
+      System.out.println("Next music");
+    else System.out.println("Music not running");
   }
 
   @Override
   public void previous() {
-    System.out.println("Previous music");
+    if(checkIfRunning("music"))
+      System.out.println("Previous music");
+    else System.out.println("Music not running");
   }
 
   @Override
   public void navigate(String url) {
-    System.out.println(STR."Loading \{url}...");
+    if(checkIfRunning("browser"))
+      System.out.println(STR."Loading \{url}...");
+    else System.out.println("Browser not running");
   }
 
   @Override
   public void call(String number) {
-    System.out.println(STR."Calling \{number}...");
+    if(checkIfRunning("phone"))
+      System.out.println(STR."Calling \{number}...");
+    else System.out.println("Phone not running");
   }
 
   @Override
   public void answer() {
-
+    if(checkIfRunning("phone"))
+      System.out.println("Answering call...");
+    else System.out.println("Phone not running");
   }
 
   @Override
   public void run(String app) {
     System.out.println(STR."Running \{app}");
+    switch(app.toLowerCase()) {
+      case "phone" -> isPhoneRunning = true;
+      case "music" -> isMusicRunning = true;
+      case "browser" -> isBrowserRunning = true;
+      default -> System.out.println(STR."\{app} not installed");
+    }
+  }
+
+  @Override
+  public String toString() {
+    return STR."IPhone{name: '\{name}\{'\''}\{'}'}";
   }
 }
