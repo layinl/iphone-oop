@@ -4,6 +4,10 @@ import me.dio.iphoneoop.app.Browser;
 import me.dio.iphoneoop.app.Music;
 import me.dio.iphoneoop.app.Phone;
 
+/**
+ * The IPhone class simulates an iPhone and all of
+ * its apps
+ */
 public class IPhone implements Music, Browser, Phone {
 
   private final String name;
@@ -11,6 +15,14 @@ public class IPhone implements Music, Browser, Phone {
   private boolean isMusicRunning;
   private boolean isBrowserRunning;
 
+  /**
+   * Checks if the specified app is running
+   * @param app the app to be checked
+   * @return true if app is running, false
+   * otherwise
+   * @throws IllegalStateException if the
+   * specified app does not exist
+   */
   private boolean checkIfRunning(String app) {
     return switch(app) {
       case "phone" -> isPhoneRunning;
@@ -50,7 +62,7 @@ public class IPhone implements Music, Browser, Phone {
 
   @Override
   public void stop() {
-    // ♪ PLEASE DON'T STOP THE MUSIC ♪
+    // ♪ PLEASE DON'T STOP THE MUSIC ♪ //
     if(checkIfRunning("music"))
       System.out.println("Stopped");
     else System.out.println("Music not running");

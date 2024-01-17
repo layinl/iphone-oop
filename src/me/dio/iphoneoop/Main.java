@@ -1,5 +1,8 @@
 package me.dio.iphoneoop;
 
+/**
+ * This program simulates the iPhone functionalities
+ */
 public class Main {
 
   public static void main(String[] args) {
